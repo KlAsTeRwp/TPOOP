@@ -7,14 +7,14 @@ var my_stack: TStack;
 begin
   Writeln('Enter number of stack items');
   Readln(number);
-  for counter := 0 to number do begin
+  for counter := 1 to number do begin
     Writeln('Enter value:');
     Readln(value);
     my_stack.push(value);
   end;
-  Writeln('Stack size', my_stack.size);
-  for counter := 0 to number do begin
+  Writeln('Stack size: ', my_stack.size);
+  for counter := 1 to number do begin
     Writeln('item #', counter, ': ', my_stack.pop());
   end;
-  Writeln('Stack size', my_stack.size);
+  Writeln('Stack size: ', my_stack.size);
 end.

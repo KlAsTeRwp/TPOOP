@@ -9,6 +9,7 @@ type
   end;
   TStack = object
     top: ^TStackItem;
+    size: integer;
     procedure push(value: string);
     function pop: string;
   end;

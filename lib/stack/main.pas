@@ -12,8 +12,9 @@ begin
     Readln(value);
     my_stack.push(value);
   end;
-
+  Writeln('Stack size', my_stack.size);
   for counter := 0 to number do begin
     Writeln('item #', counter, ': ', my_stack.pop());
   end;
+  Writeln('Stack size', my_stack.size);
 end.

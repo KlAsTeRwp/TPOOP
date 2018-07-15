@@ -29,6 +29,7 @@ implementation
       temp^.nextItem := top;
       top := temp;
     end;
+    Inc(size);
   end;
 
   function TStack.pop: string;
@@ -40,6 +41,7 @@ implementation
       prev := top;
       result := prev^.value;
       top := prev^.nextItem;
+      Dec(size);
       Freemem(prev, SizeOf(TStackItem));
     end;
     Exit(result);

@@ -1,5 +1,8 @@
 tags
 *.0
+*.o
 *.ppu
 *.tpu
+*build*
+*bin*
 bin

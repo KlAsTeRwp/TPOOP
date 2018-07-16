@@ -1,36 +1,61 @@
 program rm;
 
-function Power(Base: Double; Expon: Double): Double;
-var result: real;
-begin
-  result := Exp(Expon * Ln(Base));
-  Exit(result);
-end;
+uses math;
 
-function func(x: real): real;
-var result: real;
+function func(x: Double): Double;
+var result: Double;
 begin
   result := Power(x, 2)/(1+Power(x,6));
   Exit(result);
 end;
 
-function midle_rectangle_method(a, b: real; steps: integer): real;
-var h: real;
-    counter: integer;
-    result: real;
+function middle_rectangle_method(a, b: Double; steps: longint): Double;
+var h: Double;
+    counter: longint;
+    result: Double;
 begin
   result := 0.0;
   h := (a-b)/steps;
-  for counter:=1 to steps do begin
-    result := result + func(b + h*(counter-1) + h/2);
+  for counter:=0 to steps-1 do begin
+    result := result + func(b + h*counter + h/2);
   end;
   result := h * result;
   Exit(result);
 end;
 
-var steps: integer;
+function left_rectangle_method(a, b: Double; steps: longint): Double;
+var h: Double;
+    counter: longint;
+    result: Double;
+begin
+  result := 0.0;
+  h := (a-b)/steps;
+  for counter := 0 to steps-1 do begin
+    result := result + func(b + h*counter);
+  end;
+  result := result * h;
+  Exit(result)
+end;
+
+function right_rectangle_method(a, b: Double; steps: longint): Double;
+var h: Double;
+    counter: longint;
+    result: Double;
+begin
+  result := 0.0;
+  h := (a - b)/steps;
+  for counter:=1 to steps do begin
+    result := result + func(b + h*counter);
+  end;
+  result := result * h;
+  Exit(result);
+end;
+
+var steps: longint;
 begin
   Writeln('enter number of steps');
   Readln(steps);
-  Writeln('result of integration: ', midle_rectangle_method(2,0,steps));
+  Writeln('middle rectangle method: ', middle_rectangle_method(2,0,steps));
+  Writeln('left rectangle method: ', left_rectangle_method(2,0,steps));
+  Writeln('right rectangle method: ', right_rectangle_method(2,0,steps));
 end.
